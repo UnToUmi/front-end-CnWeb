@@ -1,0 +1,14 @@
+.product-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.product-card:hover .text-part {
+    transform: translateY(-1rem);
+}
+
+.product-card .text-part {
+    transition: transform .3s ease-out; 
+}
+
+    
