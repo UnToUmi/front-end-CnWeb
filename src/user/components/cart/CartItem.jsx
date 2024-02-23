@@ -32,10 +32,11 @@ const CartItem = ({ item }) => {
 
                     <div className='flex space-x-5 items-center text-gray-900 pt-6'>
                         <p className='font-semibold'>
-                            {item.product.price}
+                            {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.product.price)}
+
                         </p>
                         <p className='opacity-50 line-through'>
-                            {item.product.discountedPrice}
+                            {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.product.discountedPrice)}
                         </p>
                         <p className='text-green-600 font-semibold '>
                             {item.product.discountPersent}% Off

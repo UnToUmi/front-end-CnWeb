@@ -15,6 +15,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import AuthModal from '../../auth/AuthModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, logOut } from '../../../state/auth/Action';
+import AddNewProduct from './AddNewProduct';
 
 
 
@@ -33,6 +34,7 @@ export default function Navigation() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
+    const [openNewProduct, setOpenNewProduct] = useState(false);
 
     const handleClickLogo = () => {
         navigate("/")
@@ -62,6 +64,10 @@ export default function Navigation() {
         navigate("/account/order");
         handleCloseUserMenu();
 
+    }
+
+    const handleOpenAddNewProduct = () => {
+        setOpenNewProduct(true)
     }
 
     useEffect(() => {
@@ -447,6 +453,11 @@ export default function Navigation() {
                                         )
                                     }
                                 </div>
+                                <div
+                                    onClick={handleOpenAddNewProduct}
+                                    className='text-sm font-medium text-gray-700 hover:text-gray-900 cursor-pointer'>
+                                    Add a new product
+                                </div>
 
                                 {/* Search */}
                                 <div className="flex lg:ml-6">
@@ -480,6 +491,7 @@ export default function Navigation() {
                 </nav>
             </header>
             <AuthModal handleClose={handleClose} open={openAuthModal} />
+            <AddNewProduct handleClose={handleClose} open={openNewProduct} />
         </div>
     )
 }

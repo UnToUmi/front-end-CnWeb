@@ -38,7 +38,9 @@ const Cart = () => {
                                 <span>
                                     Price
                                 </span>
-                                <span>{cart.cart?.totalPrice}</span>
+                                <span>
+                                    {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(cart.cart?.totalPrice)}
+                                </span>
                             </div>
 
 
@@ -46,7 +48,9 @@ const Cart = () => {
                                 <span>
                                     Discount
                                 </span>
-                                <span className='text-green-600'>-{cart.cart?.discount}</span>
+                                <span className='text-green-600'>
+                                    - {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(cart.cart?.discount)}
+                                </span>
                             </div>
                             <div className='flex justify-between pt-3 '>
                                 <span>
@@ -58,7 +62,10 @@ const Cart = () => {
                                 <span>
                                     Total Amount
                                 </span>
-                                <span className='text-green-600 '>{cart.cart?.totalPrice - cart.cart?.discount}</span>
+                                <span className='text-green-600 '>
+                                    {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(cart.cart?.totalPrice - cart.cart?.discount)}
+
+                                </span>
                             </div>
 
                         </div>

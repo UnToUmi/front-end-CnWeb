@@ -1,5 +1,5 @@
 import { api } from "../../config/axiosConfig";
-import { FIND_PRODUCTS_FAILURE, FIND_PRODUCTS_REQUEST, FIND_PRODUCTS_SUCCESS, FIND_PRODUCT_BY_ID_FAILURE, FIND_PRODUCT_BY_ID_REQUEST, FIND_PRODUCT_BY_ID_SUCCESS } from "./ActionType";
+import { ADD_NEW_PRODUCT_FAILURE, ADD_NEW_PRODUCT_REQUEST, ADD_NEW_PRODUCT_SUCCESS, FIND_PRODUCTS_FAILURE, FIND_PRODUCTS_REQUEST, FIND_PRODUCTS_SUCCESS, FIND_PRODUCT_BY_ID_FAILURE, FIND_PRODUCT_BY_ID_REQUEST, FIND_PRODUCT_BY_ID_SUCCESS } from "./ActionType";
 
 
 export const findProducts = (reqData) => async (dispatch) => {
@@ -59,6 +59,24 @@ export const findProductsById = (reqData) => async (dispatch) => {
         dispatch({ type: FIND_PRODUCT_BY_ID_SUCCESS, payload: data })
     } catch (error) {
         dispatch({ type: FIND_PRODUCT_BY_ID_FAILURE, payload: error.message })
+
+    }
+};
+
+
+export const addNewProduct = (reqData) => async (dispatch) => {
+
+    dispatch({ type: ADD_NEW_PRODUCT_REQUEST })
+
+
+    console.log("reqData: ", reqData)
+
+    try {
+        const { data } = await api.post(`/api/admin/products/${reqData}`)
+        console.log("data: ", data)
+        dispatch({ type: ADD_NEW_PRODUCT_SUCCESS, payload: data })
+    } catch (error) {
+        dispatch({ type: ADD_NEW_PRODUCT_FAILURE, payload: error.message })
 
     }
 };
